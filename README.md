@@ -1,5 +1,11 @@
 # Vagrant
 Repositorio para trabajar sobre Vagrant
 
-# Escenario1
+# [Escenario1](escenario1/Vagrantfile)
 _Escenario sencillo con Debian 11 Bullseye y sin servidor NFS_
+
+# [Escenario2](escenario2/Vagrantfile)
+_En construcción_
+
+# [Escenario 3](escenario3/Vagrantfile)
+_Escenario previo para una siguiente modificación que se hará con Ansible. En este Vagrantfile se crean dos máquinas Router-Cliente con una red que conecta a un switch virtual y otra privada que interconecta a dichas máquinas._
