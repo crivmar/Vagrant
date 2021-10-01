@@ -1,0 +1,28 @@
+Vagrant.configure("2") do |config|
+	
+	config.vm.define :mv1 do |mv1|
+		mv1.vm.box="debian/bullseye64"
+		mv1.vm.hotname="Mv1_vagrant"
+		mv1.vm.synced_folder ".", "/vagrant", disabled: true
+		mv1.vm.provider :libvirt do |libvirt|
+    		mv1.vm.network :private_network,
+    			:libvirt__network_name => "red1",
+    			:type => "dhcp",
+    			:libvirt__network_address => '192.168.10.0'
+    		mv1.vm.network :private_network,
+    			:libvirt__network_name => "red2",
+    			:libvirt__dhcp_enabled => false,
+      			:ip => "10.0.0.1",
+      			:libvirt__forward_mode => "veryisolated"
+	end
+	config.vm.define :mv2 do |mv2|
+		mv2.vm.box="debian/bullseye64"
+		mv2.vm.hostname="Mv2_vagrant"
+		mv2.vm.synced_folder ".", "/vagrant", disabled: true
+		mv2.vm.provider :libvirt do |libvirt|
+		mv2.vm.network :red2,
+			:libvirt__dhcp_enabled => false,
+      			:ip => "10.0.0.2",
+      			:libvirt__forward_mode => "veryisolated"
+      	end
+end
