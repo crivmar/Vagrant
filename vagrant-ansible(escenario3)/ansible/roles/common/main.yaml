@@ -1,0 +1,4 @@
+- name: "Mantener los repositorios y paquetes actualizados"
+  apt:
+      update_cache: yes
+      upgrade: "yes"

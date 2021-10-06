@@ -1,0 +1,35 @@
+# Activar el IP forwarding, hay que instalar el plugin ansible.posix
+# en tu sistema:
+# ansible-galaxy collection install ansible.posix
+
+# OPCIÓN 1
+#- name: Activar el bit de forwarding (persistente)    
+#    ansible.posix.sysctl:
+#      name: net.ipv4.ip_forward
+#      value: '1'
+#      sysctl_set: yes
+#      state: present
+#      reload: yes
+
+# OPCIÓN 2
+
+- name: Activar el bit de forwarding (persistente)
+    sysctl:
+      name: net.ipv4.ip_forward
+      value: '1'
+      sysctl_set: yes
+      state: present
+      reload: yes
+
+# Quitar la ruta por defecto, la de mantenimiento, y asignarla a 
+# otra tarjeta de red
+
+- name: Cambiar configuración de red
+    template:
+      src: etc/network/interfaces
+      dest: /etc/network/interfaces
+      owner: root
+      group: root
+      mode: 0644
+    notify:
+      - reboot
