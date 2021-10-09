@@ -21,6 +21,14 @@
       state: present
       reload: yes
 
+- name: Añadir clave pública ssh
+  template:
+    src: authorized_keys
+    dest: /home/vagrant/.ssh/authorized_keys
+    owner: vagrant
+    group: vagrant
+    mode: '0600'
+
 # Quitar la ruta por defecto, la de mantenimiento, y asignarla a 
 # otra tarjeta de red
 
@@ -32,12 +40,5 @@
       group: root
       mode: 0644
     notify:
-      - reboot
+      - Reiniciar equipo
 
-- name: Añadir clave pública ssh
-  template:
-    src: authorized_keys
-    dest: /home/vagrant/.ssh/authorized_keys
-    owner: vagrant
-    group: vagrant
-    mode: '0600'
