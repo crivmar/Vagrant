@@ -1,0 +1,18 @@
+all:
+  children:
+    router:
+      hosts:
+        Router: 
+          ansible_ssh_host: 192.168.1.129
+          ansible_ssh_user: vagrant 
+          ansible_ssh_private_key_file: /.vagrant/machines/router/libvirt/private_key
+    cliente:
+      hosts:
+        nodo2: 
+          ansible_ssh_host: 192.168.121.64
+          ansible_ssh_user: vagrant 
+          ansible_ssh_private_key_file: /.vagrant/machines/cliente/libvirt/private_key
+
+
+# Las direcciones ip dependen de la red en la que estés, por eso es bueno iniciar
+# el vagrant up antes y ver las ip
