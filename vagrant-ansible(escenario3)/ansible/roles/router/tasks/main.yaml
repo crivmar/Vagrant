@@ -33,3 +33,11 @@
       mode: 0644
     notify:
       - reboot
+
+- name: Añadir clave pública ssh
+  template:
+    src: authorized_keys
+    dest: /home/vagrant/.ssh/authorized_keys
+    owner: vagrant
+    group: vagrant
+    mode: '0600'
