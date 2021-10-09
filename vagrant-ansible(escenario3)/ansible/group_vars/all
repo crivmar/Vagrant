@@ -1,12 +1,17 @@
 # router
 
 dirección_red_router: 10.0.0.0
-máscara_red_router: 255.255.255.0
-direcció_router: 10.0.0.1
+dirección_router: 10.0.0.1
 interfaz_salida_router: eth1
+
+máscara_red: 255.255.255.0
+
 
 # cliente
 
 dirección_red_cliente: 10.0.0.2
-máscara_red_cliente: 255.255.255.0
 puerta_enlace_cliente: 10.0.0.1
+
+
+# Se podría quitar la variable de puerta de enlace, pero para que se vea mejor
+# en el archivo de interfaces, la voy a mantener.
