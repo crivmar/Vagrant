@@ -9,7 +9,7 @@ máscara_red: 255.255.255.0
 
 # cliente
 
-dirección_red_cliente: 10.0.0.2
+dirección_cliente: 10.0.0.2
 puerta_enlace_cliente: 10.0.0.1
 
 
