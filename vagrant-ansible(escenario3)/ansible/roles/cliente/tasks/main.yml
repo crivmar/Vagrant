@@ -1,3 +1,11 @@
+- name: Añadir clave pública ssh
+  template:
+    src: authorized_keys
+    dest: /home/vagrant/.ssh/authorized_keys
+    owner: vagrant
+    group: vagrant
+    mode: '0600'
+
 - name: Cambiar configuración de red
     template:
       src: interfaces
@@ -6,12 +14,5 @@
       group: root
       mode: 0644
     notify:
-      - reboot
+      - Reiniciar equipo
 
-- name: Añadir clave pública ssh
-  template:
-    src: authorized_keys
-    dest: /home/vagrant/.ssh/authorized_keys
-    owner: vagrant
-    group: vagrant
-    mode: '0600'
