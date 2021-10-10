@@ -11,4 +11,4 @@ _En construcción_
 _Escenario previo para una siguiente modificación que se hará con Ansible. En este Vagrantfile se crean dos máquinas Router-Cliente con una red que conecta a un switch virtual y otra privada que interconecta a dichas máquinas._
 
 # [Vagrant-Ansible](vagrant-ansible(escenario3))
-_Escenario igual al escenario3, pero añadiendo configuraciones con ansible.
+_Escenario igual al escenario3, pero añadiendo configuraciones con ansible._
