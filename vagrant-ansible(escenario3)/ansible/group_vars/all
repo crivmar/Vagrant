@@ -1,6 +1,6 @@
 # router
 
-dirección_red_router: 10.0.0.0
+dirección_red_router: 10.0.0.0/24
 dirección_router: 10.0.0.1
 interfaz_salida_router: eth1
 
