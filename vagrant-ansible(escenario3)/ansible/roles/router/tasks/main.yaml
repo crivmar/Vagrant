@@ -14,12 +14,12 @@
 # OPCIÓN 2
 
 - name: Activar el bit de forwarding (persistente)
-    sysctl:
-      name: net.ipv4.ip_forward
-      value: '1'
-      sysctl_set: yes
-      state: present
-      reload: yes
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    sysctl_set: yes
+    state: present
+    reload: yes
 
 - name: Añadir clave pública ssh
   template:
@@ -33,12 +33,12 @@
 # otra tarjeta de red
 
 - name: Cambiar configuración de red
-    template:
-      src: interfaces
-      dest: /etc/network/interfaces
-      owner: root
-      group: root
-      mode: 0644
-    notify:
-      - Reiniciar equipo
+  template:
+    src: interfaces
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Reiniciar equipo
 

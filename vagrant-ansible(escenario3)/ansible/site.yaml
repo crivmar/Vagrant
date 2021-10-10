@@ -1,13 +1,13 @@
 - hosts: all
   become: true
   roles:
-    -role : commons
-
+   - role: commons
+   
 - hosts: router
   become: true
   roles:
-    - role : router
-
+    - role: router
+    
 - hosts: cliente
   become: true
   roles:

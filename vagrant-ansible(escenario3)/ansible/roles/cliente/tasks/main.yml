@@ -7,12 +7,12 @@
     mode: '0600'
 
 - name: Cambiar configuración de red
-    template:
-      src: interfaces
-      dest: /etc/network/interfaces
-      owner: root
-      group: root
-      mode: 0644
-    notify:
-      - Reiniciar equipo
+  template:
+    src: interfaces
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Reiniciar equipo
 
