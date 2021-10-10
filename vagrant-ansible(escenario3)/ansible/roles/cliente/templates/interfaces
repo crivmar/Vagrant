@@ -5,12 +5,12 @@ source-directory /etc/network/interfaces.d
 # The loopback network interface
 auto lo
 iface lo inet loopback
-    #elimina la ruta por defecto de mantenimiento#
-    post-up ip route del default dev $IFACE || true 
 
 # The primary network interface
 allow-hotplug eth0
 iface eth0 inet dhcp
+#elimina la ruta por defecto de mantenimiento#
+post-up ip route del default dev $IFACE || true 
 
 
 #VAGRANT-BEGIN
