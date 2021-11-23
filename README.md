@@ -12,3 +12,6 @@ _Escenario previo para una siguiente modificación que se hará con Ansible. En 
 
 # [Vagrant-Ansible](vagrant-ansible(escenario3))
 _Escenario igual al escenario3, pero añadiendo configuraciones con ansible._
+
+# [Vagrant_DNS] (Vagrant_DNS)
+_Escenario básico para prueba de varias configuraciones de DNS con bind9._
