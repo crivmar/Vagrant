@@ -15,3 +15,10 @@ _Escenario igual al escenario3, pero añadiendo configuraciones con ansible._
 
 # [Vagrant-DNS](Vagrant_DNS)
 _Escenario básico para prueba de varias configuraciones de DNS con bind9._
+
+# [Vagrant-VPN](Vagrant_VPN)
+_Escenarios básicos para pruebas de configuraciones distintas de VPN._
+
+## [VPN1](Vagrant_VPN/VPN1)
+![](imagenes/escenario_vpn1.png)
+
