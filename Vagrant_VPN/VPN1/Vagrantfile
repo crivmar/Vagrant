@@ -40,10 +40,6 @@ Vagrant.configure("2") do |config|
           :ip => "77.77.0.2/16",
           :libvirt__netmask => "255.255.0.0",
           :libvirt__forward_mode => "veryisolated"
-      cliente1.vm.provision "shell", run: "always", inline: <<-SHELL
-          ip r del default
-          ip r add default via 77.77.0.1
-      SHELL
     end
   config.vm.define :cliente2 do |cliente2|
       cliente2.vm.box = "debian/bullseye64"
