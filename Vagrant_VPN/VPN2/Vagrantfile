@@ -1,0 +1,85 @@
+Vagrant.configure("2") do |config|
+
+  # Configuración general de las máquinas
+
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.cpus = 1
+    libvirt.memory = 512
+  end
+
+  # Configuración específica de las máquinas, extremo 1
+
+  config.vm.define :servidor1 do |servidor1|
+      servidor1.vm.box = "debian/bullseye64"
+      servidor1.vm.hostname = "servidor1"
+      servidor1.vm.synced_folder ".", "/vagrant", disabled: true
+      servidor1.vm.network :private_network,
+          :libvirt__network_name => "red_internet",
+          :libvirt__dhcp_enabled => false,
+          :ip => "66.0.0.2",
+          :libvirt__netmask => "255.255.0.0",
+          :libvirt__forward_mode => "veryisolated"
+      servidor1.vm.network :private_network,
+          :libvirt__network_name => "privada01",
+          :libvirt__dhcp_enabled => false,
+          :ip => "10.0.0.1",
+          :libvirt__netmask => "255.255.255.0",
+          :libvirt__forward_mode => "veryisolated"
+      servidor1.vm.provision "shell", run: "always", inline: <<-SHELL
+        apt update && apt upgrade -y
+        sysctl -w net.ipv4.ip_forward=1
+      SHELL
+    end
+  config.vm.define :cliente1 do |cliente1|
+      cliente1.vm.box = "debian/bullseye64"
+      cliente1.vm.hostname = "cliente1"
+      cliente1.vm.synced_folder ".", "/vagrant", disabled: true
+      cliente1.vm.network :private_network,
+          :libvirt__network_name => "privada01",
+          :libvirt__dhcp_enabled => false,
+          :ip => "10.0.0.2",
+          :libvirt__netmask => "255.255.255.0",
+          :libvirt__forward_mode => "veryisolated"
+      cliente2.vm.provision "shell", run: "always", inline: <<-SHELL
+          apt update && apt upgrade -y
+      SHELL
+    end
+
+  # Configuración específica de las máquinas, extremo 2
+
+    config.vm.define :servidor2 do |servidor2|
+      servidor2.vm.box = "debian/bullseye64"
+      servidor2.vm.hostname = "servidor2"
+      servidor2.vm.synced_folder ".", "/vagrant", disabled: true
+      servidor2.vm.network :private_network,
+          :libvirt__network_name => "red_internet",
+          :libvirt__dhcp_enabled => false,
+          :ip => "66.0.0.3",
+          :libvirt__netmask => "255.255.0.0",
+          :libvirt__forward_mode => "veryisolated"
+      servidor2.vm.network :private_network,
+          :libvirt__network_name => "privada02",
+          :libvirt__dhcp_enabled => false,
+          :ip => "11.0.0.1",
+          :libvirt__netmask => "255.255.255.0",
+          :libvirt__forward_mode => "veryisolated"
+      servidor1.vm.provision "shell", run: "always", inline: <<-SHELL
+        apt update && apt upgrade -y
+        sysctl -w net.ipv4.ip_forward=1
+      SHELL
+    end
+  config.vm.define :cliente2 do |cliente2|
+      cliente2.vm.box = "debian/bullseye64"
+      cliente2.vm.hostname = "cliente2"
+      cliente2.vm.synced_folder ".", "/vagrant", disabled: true
+      cliente2.vm.network :private_network,
+          :libvirt__network_name => "privada02",
+          :libvirt__dhcp_enabled => false,
+          :ip => "11.0.0.2",
+          :libvirt__netmask => "255.255.255.0",
+          :libvirt__forward_mode => "veryisolated"
+      cliente2.vm.provision "shell", run: "always", inline: <<-SHELL
+          apt update && apt upgrade -y
+      SHELL
+    end
+end
