@@ -22,3 +22,5 @@ _Escenarios básicos para pruebas de configuraciones distintas de VPN._
 ## [VPN1](Vagrant_VPN/VPN1)
 ![](imagenes/escenario_vpn1.png)
 
+## [VPN2](Vagrant_VPN/VPN2)
+![](imagenes/escenario_vpn2.png)
