@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
       servidor1.vm.network :private_network,
           :libvirt__network_name => "privada01",
           :libvirt__dhcp_enabled => false,
-          :ip => "10.0.0.1",
+          :ip => "12.0.0.1",
           :libvirt__netmask => "255.255.255.0",
           :libvirt__forward_mode => "veryisolated"
       servidor1.vm.provision "shell", run: "always", inline: <<-SHELL
@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
       cliente1.vm.network :private_network,
           :libvirt__network_name => "privada01",
           :libvirt__dhcp_enabled => false,
-          :ip => "10.0.0.2",
+          :ip => "12.0.0.2",
           :libvirt__netmask => "255.255.255.0",
           :libvirt__forward_mode => "veryisolated"
       cliente1.vm.provision "shell", run: "always", inline: <<-SHELL
