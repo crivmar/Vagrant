@@ -10,6 +10,9 @@ _En construcción_
 # [Escenario 3](escenario3/Vagrantfile)
 _Escenario previo para una siguiente modificación que se hará con Ansible. En este Vagrantfile se crean dos máquinas Router-Cliente con una red que conecta a un switch virtual y otra privada que interconecta a dichas máquinas._
 
+# [Escenario DRBD](escenario_drbd/Vagrantfile)
+_Escenario con dos máquinas que tienen un disco duro adicional de 1GB. Es el escenario base para una práctica de dispositivos de bloques compartidos. DRBD y OCFS2_
+
 # [Vagrant-Ansible](vagrant-ansible(escenario3))
 _Escenario igual al escenario3, pero añadiendo configuraciones con ansible._
 
