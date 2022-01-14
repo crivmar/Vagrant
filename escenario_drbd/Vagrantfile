@@ -1,0 +1,47 @@
+Vagrant.configure("2") do |config|
+
+  # Configuración general de las máquinas
+
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.cpus = 1
+    libvirt.memory = 512
+  end
+
+# Configuración de la máquinas
+
+  config.vm.define :maquina1 do |maquina1|
+    maquina1.vm.box = "debian/bullseye64"
+    maquina1.vm.hostname = "maquina1"
+    maquina1.vm.provider :libvirt do |v|
+      v.storage :file, :size => '1G'
+    end
+    maquina1.vm.synced_folder ".", "/vagrant", disabled: true
+    maquina1.vm.network :private_network,
+        :libvirt__network_name => "red_internet",
+        :libvirt__dhcp_enabled => false,
+        :ip => "88.88.88.2",
+        :libvirt__netmask => "255.255.0.0",
+        :libvirt__forward_mode => "veryisolated"
+    maquina1.vm.provision "shell", run: "always", inline: <<-SHELL
+      apt update
+    SHELL
+  end
+
+  config.vm.define :maquina2 do |maquina2|
+    maquina2.vm.box = "debian/bullseye64"
+    maquina2.vm.hostname = "maquina2"
+    maquina2.vm.provider :libvirt do |v|
+      v.storage :file, :size => '1G'
+    end
+    maquina2.vm.synced_folder ".", "/vagrant", disabled: true
+    maquina2.vm.network :private_network,
+        :libvirt__network_name => "red_internet",
+        :libvirt__dhcp_enabled => false,
+        :ip => "88.88.88.3",
+        :libvirt__netmask => "255.255.0.0",
+        :libvirt__forward_mode => "veryisolated"
+    maquina2.vm.provision "shell", run: "always", inline: <<-SHELL
+      apt update
+    SHELL
+  end
+end
